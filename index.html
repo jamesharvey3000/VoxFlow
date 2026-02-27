@@ -1,7 +1,623 @@
-<h1>VoxFlow</h1>
-```
-4. Click **Commit changes**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoxFlow — Offline Voice-to-Text for Windows</title>
+    <meta name="description" content="VoxFlow is an offline voice-to-text app for Windows. No ads, no internet required, no background processes. 99 languages supported.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-After a minute or two your site will be live at:
-```
-https://jamesharvey3000.github.io/VoxFlow
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #0a1f1f;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* NAV */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            border-bottom: 1px solid #1c5858;
+            position: sticky;
+            top: 0;
+            background: #0a1f1f;
+            z-index: 100;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .nav-logo i { color: #FF6B2F; font-size: 22px; }
+        .nav-logo span { color: #FF6B2F; }
+
+        .nav-links { display: flex; gap: 32px; align-items: center; }
+
+        .nav-links a {
+            color: #8AABAB;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: #ffffff; }
+
+        .btn-download {
+            background: #FF6B2F;
+            color: #ffffff !important;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px !important;
+            transition: background 0.2s !important;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-download:hover { background: #e55a1f !important; }
+
+        /* HERO */
+        .hero {
+            text-align: center;
+            padding: 100px 20px 80px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: #1c5858;
+            border: 1px solid #FF6B2F;
+            color: #FF6B2F;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span { color: #FF6B2F; }
+
+        .hero p {
+            font-size: 20px;
+            color: #8AABAB;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: #FF6B2F;
+            color: #ffffff;
+            padding: 16px 36px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary:hover { background: #e55a1f; }
+
+        .btn-secondary {
+            background: transparent;
+            color: #ffffff;
+            padding: 16px 36px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid #1c5858;
+            transition: border-color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-secondary:hover { border-color: #8AABAB; }
+
+        .hero-note {
+            margin-top: 16px;
+            font-size: 13px;
+            color: #8AABAB;
+        }
+
+        /* TRUST */
+        .trust {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding: 40px 20px;
+            border-top: 1px solid #1c5858;
+            border-bottom: 1px solid #1c5858;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #8AABAB;
+            font-size: 14px;
+        }
+
+        .trust-item i {
+            color: #FF6B2F;
+            font-size: 18px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* FEATURES */
+        .features {
+            padding: 80px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            text-align: center;
+            color: #FF6B2F;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: #1c5858;
+            border: 1px solid #1c7070;
+            border-radius: 12px;
+            padding: 28px;
+            transition: border-color 0.2s;
+        }
+
+        .feature-card:hover { border-color: #FF6B2F; }
+
+        .feature-icon {
+            width: 44px;
+            height: 44px;
+            background: #0f3333;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .feature-icon i {
+            color: #FF6B2F;
+            font-size: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: #8AABAB;
+            line-height: 1.6;
+        }
+
+        /* VS */
+        .vs-section {
+            padding: 80px 20px;
+            background: #0f2e2e;
+        }
+
+        .vs-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .vs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+        }
+
+        .vs-table th {
+            padding: 16px 20px;
+            text-align: left;
+            font-size: 14px;
+            font-weight: 700;
+            border-bottom: 1px solid #1c7070;
+        }
+
+        .vs-table th:nth-child(2) { color: #8AABAB; text-align: center; }
+        .vs-table th:nth-child(3) { color: #FF6B2F; text-align: center; }
+
+        .vs-table td {
+            padding: 14px 20px;
+            font-size: 14px;
+            color: #8AABAB;
+            border-bottom: 1px solid #1c5858;
+        }
+
+        .vs-table td:nth-child(2),
+        .vs-table td:nth-child(3) { text-align: center; }
+
+        .vs-table td i.fa-check { color: #4ade80; font-size: 16px; }
+        .vs-table td i.fa-xmark { color: #f87171; font-size: 16px; }
+
+        /* PRICING */
+        .pricing {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .price-card {
+            display: inline-block;
+            background: #1c5858;
+            border: 2px solid #FF6B2F;
+            border-radius: 16px;
+            padding: 48px 64px;
+            margin-top: 40px;
+        }
+
+        .price-amount {
+            font-size: 64px;
+            font-weight: 800;
+            color: #FF6B2F;
+            line-height: 1;
+        }
+
+        .price-period {
+            font-size: 18px;
+            color: #8AABAB;
+            margin-bottom: 32px;
+            margin-top: 8px;
+        }
+
+        .price-features {
+            list-style: none;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+
+        .price-features li {
+            padding: 8px 0;
+            font-size: 15px;
+            color: #8AABAB;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .price-features li i { color: #FF6B2F; width: 16px; }
+
+        /* FAQ */
+        .faq {
+            padding: 80px 20px;
+            background: #0f2e2e;
+        }
+
+        .faq-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #1c5858;
+            padding: 24px 0;
+        }
+
+        .faq-item h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .faq-item h3 i { color: #FF6B2F; font-size: 14px; }
+
+        .faq-item p {
+            font-size: 14px;
+            color: #8AABAB;
+            line-height: 1.7;
+            padding-left: 24px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid #1c5858;
+            color: #8AABAB;
+            font-size: 13px;
+        }
+
+        footer a { color: #FF6B2F; text-decoration: none; }
+
+        footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 12px;
+        }
+
+        footer .footer-links a {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #8AABAB;
+            font-size: 13px;
+        }
+
+        footer .footer-links a:hover { color: #FF6B2F; }
+
+        @media (max-width: 600px) {
+            nav { padding: 16px 20px; }
+            .hero h1 { font-size: 36px; }
+            .price-card { padding: 32px 24px; }
+            .nav-links a:not(.btn-download) { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="#" class="nav-logo">
+    <img src="voxflow_logo512x512.png" width="32" height="32" style="border-radius:50%;">
+    Vox<span>Flow</span>
+</a>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#faq">FAQ</a>
+            <a href="https://github.com/jamesharvey3000/VoxFlow/releases/latest/download/VoxFlow_Setup.exe" class="btn-download">
+                <i class="fa-solid fa-download"></i> Download
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-badge">OFFLINE &nbsp;·&nbsp; PRIVATE &nbsp;·&nbsp; FAST</div>
+        <h1>Voice-to-Text That<br><span>Respects Your PC</span></h1>
+        <p>No ads. No internet required. No background processes stealing your CPU. Just fast, accurate voice-to-text for Windows.</p>
+        <div class="hero-buttons">
+            <a href="https://github.com/jamesharvey3000/VoxFlow/releases/latest/download/VoxFlow_Setup.exe" class="btn-primary">
+                <i class="fa-solid fa-download"></i> Download VoxFlow
+            </a>
+            <a href="#features" class="btn-secondary">
+                <i class="fa-solid fa-list"></i> See Features
+            </a>
+        </div>
+        <p class="hero-note">Windows 10/11 &nbsp;·&nbsp; One-time payment &nbsp;·&nbsp; Free updates forever</p>
+    </section>
+
+    <!-- TRUST -->
+    <div class="trust">
+        <div class="trust-item">
+            <i class="fa-solid fa-lock"></i>
+            <span>100% Offline — nothing leaves your PC</span>
+        </div>
+        <div class="trust-item">
+            <i class="fa-solid fa-globe"></i>
+            <span>99 Languages supported</span>
+        </div>
+        <div class="trust-item">
+            <i class="fa-solid fa-ban"></i>
+            <span>No subscription, ever</span>
+        </div>
+        <div class="trust-item">
+            <i class="fa-solid fa-rotate"></i>
+            <span>Free updates for life</span>
+        </div>
+    </div>
+
+    <!-- FEATURES -->
+    <section class="features" id="features">
+        <p class="section-label">FEATURES</p>
+        <h2 class="section-title">Everything you need, nothing you don't</h2>
+        <div class="features-grid">
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-microchip"></i></div>
+                <h3>Offline AI Recognition</h3>
+                <p>Powered by Whisper AI running entirely on your machine. No cloud, no latency, no privacy concerns.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-globe"></i></div>
+                <h3>99 Languages</h3>
+                <p>Switch between any of 99 supported languages instantly from the settings panel.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-book"></i></div>
+                <h3>Custom Vocabulary</h3>
+                <p>Teach VoxFlow your names, technical terms, and business jargon so they're always spelled correctly.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+                <h3>Text Templates</h3>
+                <p>Say a short keyword and instantly type out a full paragraph, email signature, or code snippet.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                <h3>Recording History</h3>
+                <p>Every transcription is saved for quick access. Copy any recent dictation with one click.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-terminal"></i></div>
+                <h3>Voice Commands</h3>
+                <p>Say "open bracket", "new line", "comma" and more. Full symbol and punctuation control by voice.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-tablet-screen-button"></i></div>
+                <h3>Floating Pill Widget</h3>
+                <p>A sleek always-on-top pill widget shows recording status. Drag it anywhere, resize it, adjust opacity.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+                <h3>Auto-Updater</h3>
+                <p>VoxFlow silently checks for updates and notifies you when a new version is ready to install.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-keyboard"></i></div>
+                <h3>Global Hotkey</h3>
+                <p>Record from any app using a customizable global hotkey. Hold to record or toggle mode.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- VS -->
+    <section class="vs-section">
+        <div class="vs-container">
+            <p class="section-label">COMPARISON</p>
+            <h2 class="section-title">VoxFlow vs LilySpeech</h2>
+            <table class="vs-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>LilySpeech</th>
+                        <th>VoxFlow</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Works offline</td><td><i class="fa-solid fa-xmark"></i></td><td><i class="fa-solid fa-check"></i></td></tr>
+                    <tr><td>No ads</td><td><i class="fa-solid fa-xmark"></i></td><td><i class="fa-solid fa-check"></i></td></tr>
+                    <tr><td>No background CPU usage</td><td><i class="fa-solid fa-xmark"></i></td><td><i class="fa-solid fa-check"></i></td></tr>
+                    <tr><td>No subscription</td><td><i class="fa-solid fa-xmark"></i></td><td><i class="fa-solid fa-check"></i></td></tr>
+                    <tr><td>Custom vocabulary</td><td><i class="fa-solid fa-check"></i></td><td><i class="fa-solid fa-check"></i></td></tr>
+                    <tr><td>99 languages</td><td><i class="fa-solid fa-xmark"></i></td><td><i class="fa-solid fa-check"></i></td></tr>
+                    <tr><td>Text templates</td><td><i class="fa-solid fa-xmark"></i></td><td><i class="fa-solid fa-check"></i></td></tr>
+                    <tr><td>Recording history</td><td><i class="fa-solid fa-xmark"></i></td><td><i class="fa-solid fa-check"></i></td></tr>
+                    <tr><td>One-time price</td><td><i class="fa-solid fa-xmark"></i></td><td><i class="fa-solid fa-check"></i></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing" id="pricing">
+        <p class="section-label">PRICING</p>
+        <h2 class="section-title">Simple, honest pricing</h2>
+        <div class="price-card">
+            <div class="price-amount">$4.99</div>
+            <div class="price-period">one-time &nbsp;·&nbsp; no subscription</div>
+            <ul class="price-features">
+                <li><i class="fa-solid fa-check"></i> Full access to every feature</li>
+                <li><i class="fa-solid fa-check"></i> 99 language support</li>
+                <li><i class="fa-solid fa-check"></i> Custom vocabulary and templates</li>
+                <li><i class="fa-solid fa-check"></i> Free updates forever</li>
+                <li><i class="fa-solid fa-check"></i> Windows 10 and 11</li>
+            </ul>
+            <a href="https://github.com/jamesharvey3000/VoxFlow/releases/latest/download/VoxFlow_Setup.exe"
+               class="btn-primary" style="width:100%; justify-content:center;">
+                <i class="fa-solid fa-download"></i> Download Now
+            </a>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <div class="faq-container">
+            <p class="section-label">FAQ</p>
+            <h2 class="section-title">Common questions</h2>
+
+            <div class="faq-item">
+                <h3><i class="fa-solid fa-circle-question"></i> Does VoxFlow require an internet connection?</h3>
+                <p>No. VoxFlow runs entirely offline using a local AI model downloaded once at first launch. After that it works with no internet at all.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fa-solid fa-circle-question"></i> How is this different from Windows built-in speech recognition?</h3>
+                <p>Windows Speech Recognition requires training and doesn't work well out of the box. VoxFlow uses Whisper AI which is significantly more accurate and works in 99 languages without any training.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fa-solid fa-circle-question"></i> Will it work in any app?</h3>
+                <p>Yes. VoxFlow uses a global hotkey and injects text directly — it works in any Windows application including browsers, Word, Slack, VS Code and games.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fa-solid fa-circle-question"></i> What are the system requirements?</h3>
+                <p>Windows 10 or 11, 64-bit. A microphone. At least 4GB of RAM recommended for best performance.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fa-solid fa-circle-question"></i> Do I get free updates?</h3>
+                <p>Yes. Pay once and get every future update for free. VoxFlow notifies you automatically when updates are available.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fa-solid fa-circle-question"></i> Found a bug or need help?</h3>
+                <p>Use the built-in bug reporter in Settings → About, or email <a href="mailto:kagedambition@gmail.com" style="color:#FF6B2F;">kagedambition@gmail.com</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 JH Dev &nbsp;·&nbsp; Built for Windows users who value privacy</p>
+        <div class="footer-links">
+            <a href="https://github.com/jamesharvey3000/VoxFlow">
+                <i class="fa-brands fa-github"></i> GitHub
+            </a>
+            <a href="mailto:kagedambition@gmail.com">
+                <i class="fa-solid fa-envelope"></i> Contact
+            </a>
+            <a href="https://github.com/jamesharvey3000/VoxFlow/releases/latest/download/VoxFlow_Setup.exe">
+                <i class="fa-solid fa-download"></i> Download
+            </a>
+        </div>
+    </footer>
+
+</body>
+</html>
