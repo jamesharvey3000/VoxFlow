@@ -39,13 +39,6 @@
             text-decoration: none;
         }
 
-        .nav-logo img {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
         .nav-logo span { color: #FF6B2F; }
 
         .nav-links { display: flex; gap: 32px; align-items: center; }
@@ -77,7 +70,7 @@
         /* HERO */
         .hero {
             text-align: center;
-            padding: 100px 20px 80px;
+            padding: 80px 20px 80px;
             max-width: 800px;
             margin: 0 auto;
         }
@@ -92,7 +85,16 @@
             font-size: 12px;
             font-weight: 600;
             letter-spacing: 1px;
-            margin-bottom: 24px;
+            margin-bottom: 32px;
+        }
+
+        .hero-logo {
+            width: 140px;
+            height: 140px;
+            border-radius: 28px;
+            object-fit: cover;
+            margin: 0 auto 32px;
+            display: block;
         }
 
         .hero h1 {
@@ -104,24 +106,12 @@
 
         .hero h1 span { color: #FF6B2F; }
 
-        .hero-story {
-            font-size: 18px;
-            color: #8AABAB;
-            margin-bottom: 16px;
-            max-width: 620px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.8;
-        }
-
-        .hero-story strong { color: #ffffff; }
-
         .hero-buttons {
             display: flex;
             gap: 16px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 36px;
+            margin-top: 8px;
         }
 
         .btn-primary {
@@ -187,37 +177,6 @@
             font-size: 18px;
             width: 20px;
             text-align: center;
-        }
-
-        /* STORY */
-        .story {
-            padding: 80px 20px;
-            max-width: 680px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .story h2 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .story p {
-            font-size: 16px;
-            color: #8AABAB;
-            line-height: 1.9;
-            margin-bottom: 16px;
-        }
-
-        .story p strong { color: #ffffff; }
-
-        .story-divider {
-            width: 48px;
-            height: 3px;
-            background: #FF6B2F;
-            margin: 32px auto;
-            border-radius: 2px;
         }
 
         /* FEATURES */
@@ -475,6 +434,7 @@
         @media (max-width: 600px) {
             nav { padding: 16px 20px; }
             .hero h1 { font-size: 34px; }
+            .hero-logo { width: 100px; height: 100px; border-radius: 20px; }
             .price-card { padding: 32px 24px; }
             .nav-links a:not(.btn-download) { display: none; }
         }
@@ -485,7 +445,6 @@
     <!-- NAV -->
     <nav>
         <a href="#" class="nav-logo">
-            <img src="voxflow_logo512x512.png" alt="VoxFlow Logo">
             Vox<span>Flow</span>
         </a>
         <div class="nav-links">
@@ -501,13 +460,7 @@
     <!-- HERO -->
     <section class="hero">
         <div class="hero-badge">WINDOWS 10 &nbsp;·&nbsp; WINDOWS 11 &nbsp;·&nbsp; OFFLINE</div>
-        <h1>I Built the Voice-to-Text App<br><span>I Actually Wanted to Use</span></h1>
-        <p class="hero-story">
-            I was using a popular voice-to-text app until I found out the free version
-            <strong>quietly uses your CPU and internet bandwidth in the background</strong>
-            to subsidize their costs. That was enough for me. VoxFlow is what I built
-            instead — completely offline, no ads, $4.99 once. That's it.
-        </p>
+        <img src="voxflow_logo512x512.png" alt="VoxFlow" class="hero-logo">
         <div class="hero-buttons">
             <a href="https://github.com/jamesharvey3000/VoxFlow/releases/latest/download/VoxFlow_Setup.exe" class="btn-primary">
                 <i class="fa-solid fa-download"></i> Download VoxFlow
@@ -523,7 +476,7 @@
     <div class="trust">
         <div class="trust-item">
             <i class="fa-solid fa-lock"></i>
-            <span>100% offline — nothing leaves your PC</span>
+            <span>Audio never leaves your PC</span>
         </div>
         <div class="trust-item">
             <i class="fa-solid fa-globe"></i>
@@ -539,30 +492,6 @@
         </div>
     </div>
 
-    <!-- STORY -->
-    <section class="story">
-        <h2>Why I built this</h2>
-        <p>
-            Voice-to-text on Windows has always been a compromise. The built-in Windows
-            option never quite worked well enough. Cloud-based tools send your audio to
-            a server somewhere. And some apps come with hidden costs —
-            <strong>not just money, but your CPU, your bandwidth, and your privacy.
-            Read the fine print sometime.</strong>
-        </p>
-        <p>
-            VoxFlow uses <strong>Whisper AI</strong>, an open-source model that runs
-            entirely on your own machine. It downloads once on first launch and never
-            needs the internet again. No servers. No data leaving your PC. Just accurate,
-            fast transcription that works in any Windows application.
-        </p>
-        <div class="story-divider"></div>
-        <p>
-            It's a side project, built properly. I use it every day and I'll keep
-            improving it. If something breaks, there's a bug reporter built right into
-            the app that emails me directly. I read everything.
-        </p>
-    </section>
-
     <!-- FEATURES -->
     <section class="features" id="features">
         <div class="features-inner">
@@ -574,14 +503,14 @@
 
                 <div class="feature-card">
                     <div class="feature-icon"><i class="fa-solid fa-microchip"></i></div>
-                    <h3>Offline AI — Powered by Whisper</h3>
-                    <p>The same AI model behind some of the best transcription tools, running entirely on your machine. No internet, no servers, no monthly fees.</p>
+                    <h3>Offline AI Recognition</h3>
+                    <p>VoxFlow runs an on-device AI model that handles all transcription locally. Your audio is processed on your machine and nowhere else. The only time it contacts the internet is to check for app updates.</p>
                 </div>
 
                 <div class="feature-card">
                     <div class="feature-icon"><i class="fa-solid fa-globe"></i></div>
                     <h3>99 Languages</h3>
-                    <p>Switch languages from the settings panel. Whisper supports 99 of them natively — all of them are available in VoxFlow.</p>
+                    <p>Switch languages from the settings panel. All 99 supported languages are available and switch instantly without restarting the app.</p>
                 </div>
 
                 <div class="feature-card">
@@ -617,7 +546,7 @@
                 <div class="feature-card">
                     <div class="feature-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
                     <h3>Automatic Updates</h3>
-                    <p>VoxFlow checks for new versions silently in the background and lets you know when one is ready. No manual checking needed.</p>
+                    <p>VoxFlow checks for new versions silently in the background and lets you know when one is ready. Nothing installs without your say so.</p>
                 </div>
 
                 <div class="feature-card">
@@ -650,7 +579,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>Works offline</td><td><i class="fa-solid fa-xmark"></i></td><td><i class="fa-solid fa-check"></i></td></tr>
+                    <tr><td>Audio stays on your machine</td><td><i class="fa-solid fa-xmark"></i></td><td><i class="fa-solid fa-check"></i></td></tr>
                     <tr><td>No ads</td><td><i class="fa-solid fa-xmark"></i></td><td><i class="fa-solid fa-check"></i></td></tr>
                     <tr><td>No background CPU usage</td><td><i class="fa-solid fa-xmark"></i></td><td><i class="fa-solid fa-check"></i></td></tr>
                     <tr><td>No subscription</td><td><i class="fa-solid fa-xmark"></i></td><td><i class="fa-solid fa-check"></i></td></tr>
@@ -699,12 +628,12 @@
 
             <div class="faq-item">
                 <h3><i class="fa-solid fa-circle-question"></i> Does it really work with no internet?</h3>
-                <p>Yes. On first launch it downloads the Whisper AI model once (about 140MB). After that it never needs the internet again. Disconnect entirely and it works fine.</p>
+                <p>For the most part, yes. The AI model downloads once on first launch (about 140MB) and all transcription happens locally after that. The only time VoxFlow contacts the internet is to check if a new version is available — your audio and transcriptions never leave your machine.</p>
             </div>
 
             <div class="faq-item">
                 <h3><i class="fa-solid fa-circle-question"></i> How accurate is it compared to cloud-based tools?</h3>
-                <p>Surprisingly close. Whisper is one of the best open-source speech models available and handles natural speech, accents, and technical language well. For most everyday use you won't notice a meaningful difference.</p>
+                <p>Surprisingly close. The on-device AI handles natural speech, accents, and technical language well. For most everyday use you won't notice a meaningful difference from cloud-based alternatives.</p>
             </div>
 
             <div class="faq-item">
@@ -742,6 +671,9 @@
             </a>
             <a href="mailto:kagedambition@gmail.com">
                 <i class="fa-solid fa-envelope"></i> Contact
+            </a>
+            <a href="https://github.com/jamesharvey3000/VoxFlow/releases/latest/download/VoxFlow_Setup.exe">
+                <i class="fa-solid fa-download"></i> Download
             </a>
         </div>
     </footer>
