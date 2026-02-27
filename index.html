@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VoxFlow — Offline Voice-to-Text for Windows</title>
-    <meta name="description" content="VoxFlow is an offline voice-to-text app for Windows. No ads, no internet required, no background processes. 99 languages supported.">
+    <meta name="description" content="VoxFlow is an offline voice-to-text app for Windows built by a developer who got tired of the alternatives. No ads, no internet, no nonsense.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -39,7 +39,13 @@
             text-decoration: none;
         }
 
-        .nav-logo i { color: #FF6B2F; font-size: 22px; }
+        .nav-logo img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
         .nav-logo span { color: #FF6B2F; }
 
         .nav-links { display: flex; gap: 32px; align-items: center; }
@@ -90,28 +96,32 @@
         }
 
         .hero h1 {
-            font-size: 56px;
+            font-size: 52px;
             font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 20px;
+            line-height: 1.15;
+            margin-bottom: 24px;
         }
 
         .hero h1 span { color: #FF6B2F; }
 
-        .hero p {
-            font-size: 20px;
+        .hero-story {
+            font-size: 18px;
             color: #8AABAB;
-            margin-bottom: 40px;
-            max-width: 600px;
+            margin-bottom: 16px;
+            max-width: 620px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.8;
         }
+
+        .hero-story strong { color: #ffffff; }
 
         .hero-buttons {
             display: flex;
             gap: 16px;
             justify-content: center;
             flex-wrap: wrap;
+            margin-top: 36px;
         }
 
         .btn-primary {
@@ -179,9 +189,44 @@
             text-align: center;
         }
 
+        /* STORY */
+        .story {
+            padding: 80px 20px;
+            max-width: 680px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .story h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .story p {
+            font-size: 16px;
+            color: #8AABAB;
+            line-height: 1.9;
+            margin-bottom: 16px;
+        }
+
+        .story p strong { color: #ffffff; }
+
+        .story-divider {
+            width: 48px;
+            height: 3px;
+            background: #FF6B2F;
+            margin: 32px auto;
+            border-radius: 2px;
+        }
+
         /* FEATURES */
         .features {
             padding: 80px 20px;
+            background: #0f2e2e;
+        }
+
+        .features-inner {
             max-width: 1100px;
             margin: 0 auto;
         }
@@ -197,9 +242,16 @@
 
         .section-title {
             text-align: center;
-            font-size: 36px;
+            font-size: 32px;
             font-weight: 700;
-            margin-bottom: 60px;
+            margin-bottom: 12px;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: #8AABAB;
+            font-size: 15px;
+            margin-bottom: 48px;
         }
 
         .features-grid {
@@ -229,13 +281,10 @@
             margin-bottom: 16px;
         }
 
-        .feature-icon i {
-            color: #FF6B2F;
-            font-size: 20px;
-        }
+        .feature-icon i { color: #FF6B2F; font-size: 20px; }
 
         .feature-card h3 {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             margin-bottom: 8px;
         }
@@ -243,13 +292,12 @@
         .feature-card p {
             font-size: 14px;
             color: #8AABAB;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         /* VS */
         .vs-section {
             padding: 80px 20px;
-            background: #0f2e2e;
         }
 
         .vs-container {
@@ -257,10 +305,20 @@
             margin: 0 auto;
         }
 
+        .vs-context {
+            text-align: center;
+            color: #8AABAB;
+            font-size: 15px;
+            max-width: 580px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .vs-context strong { color: #ffffff; }
+
         .vs-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 40px;
         }
 
         .vs-table th {
@@ -291,7 +349,18 @@
         .pricing {
             padding: 80px 20px;
             text-align: center;
+            background: #0f2e2e;
         }
+
+        .pricing-context {
+            color: #8AABAB;
+            font-size: 15px;
+            max-width: 500px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .pricing-context strong { color: #ffffff; }
 
         .price-card {
             display: inline-block;
@@ -299,7 +368,6 @@
             border: 2px solid #FF6B2F;
             border-radius: 16px;
             padding: 48px 64px;
-            margin-top: 40px;
         }
 
         .price-amount {
@@ -310,7 +378,7 @@
         }
 
         .price-period {
-            font-size: 18px;
+            font-size: 16px;
             color: #8AABAB;
             margin-bottom: 32px;
             margin-top: 8px;
@@ -333,10 +401,15 @@
 
         .price-features li i { color: #FF6B2F; width: 16px; }
 
+        .price-note {
+            margin-top: 16px;
+            font-size: 13px;
+            color: #8AABAB;
+        }
+
         /* FAQ */
         .faq {
             padding: 80px 20px;
-            background: #0f2e2e;
         }
 
         .faq-container {
@@ -364,7 +437,7 @@
         .faq-item p {
             font-size: 14px;
             color: #8AABAB;
-            line-height: 1.7;
+            line-height: 1.8;
             padding-left: 24px;
         }
 
@@ -375,6 +448,7 @@
             border-top: 1px solid #1c5858;
             color: #8AABAB;
             font-size: 13px;
+            background: #0a1f1f;
         }
 
         footer a { color: #FF6B2F; text-decoration: none; }
@@ -384,6 +458,7 @@
             justify-content: center;
             gap: 24px;
             margin-top: 12px;
+            flex-wrap: wrap;
         }
 
         footer .footer-links a {
@@ -392,13 +467,14 @@
             gap: 6px;
             color: #8AABAB;
             font-size: 13px;
+            transition: color 0.2s;
         }
 
         footer .footer-links a:hover { color: #FF6B2F; }
 
         @media (max-width: 600px) {
             nav { padding: 16px 20px; }
-            .hero h1 { font-size: 36px; }
+            .hero h1 { font-size: 34px; }
             .price-card { padding: 32px 24px; }
             .nav-links a:not(.btn-download) { display: none; }
         }
@@ -409,9 +485,9 @@
     <!-- NAV -->
     <nav>
         <a href="#" class="nav-logo">
-    <img src="voxflow_logo512x512.png" width="32" height="32" style="border-radius:50%;">
-    Vox<span>Flow</span>
-</a>
+            <img src="voxflow_logo512x512.png" alt="VoxFlow Logo">
+            Vox<span>Flow</span>
+        </a>
         <div class="nav-links">
             <a href="#features">Features</a>
             <a href="#pricing">Pricing</a>
@@ -424,33 +500,38 @@
 
     <!-- HERO -->
     <section class="hero">
-        <div class="hero-badge">OFFLINE &nbsp;·&nbsp; PRIVATE &nbsp;·&nbsp; FAST</div>
-        <h1>Voice-to-Text That<br><span>Respects Your PC</span></h1>
-        <p>No ads. No internet required. No background processes stealing your CPU. Just fast, accurate voice-to-text for Windows.</p>
+        <div class="hero-badge">WINDOWS 10 &nbsp;·&nbsp; WINDOWS 11 &nbsp;·&nbsp; OFFLINE</div>
+        <h1>I Built the Voice-to-Text App<br><span>I Actually Wanted to Use</span></h1>
+        <p class="hero-story">
+            I was using a popular voice-to-text app until I found out the free version
+            <strong>quietly uses your CPU and internet bandwidth in the background</strong>
+            to subsidize their costs. That was enough for me. VoxFlow is what I built
+            instead — completely offline, no ads, $4.99 once. That's it.
+        </p>
         <div class="hero-buttons">
             <a href="https://github.com/jamesharvey3000/VoxFlow/releases/latest/download/VoxFlow_Setup.exe" class="btn-primary">
                 <i class="fa-solid fa-download"></i> Download VoxFlow
             </a>
             <a href="#features" class="btn-secondary">
-                <i class="fa-solid fa-list"></i> See Features
+                <i class="fa-solid fa-list"></i> See What's Included
             </a>
         </div>
-        <p class="hero-note">Windows 10/11 &nbsp;·&nbsp; One-time payment &nbsp;·&nbsp; Free updates forever</p>
+        <p class="hero-note">One-time payment of $4.99 &nbsp;·&nbsp; Free updates forever &nbsp;·&nbsp; No account required</p>
     </section>
 
     <!-- TRUST -->
     <div class="trust">
         <div class="trust-item">
             <i class="fa-solid fa-lock"></i>
-            <span>100% Offline — nothing leaves your PC</span>
+            <span>100% offline — nothing leaves your PC</span>
         </div>
         <div class="trust-item">
             <i class="fa-solid fa-globe"></i>
-            <span>99 Languages supported</span>
+            <span>99 languages supported</span>
         </div>
         <div class="trust-item">
             <i class="fa-solid fa-ban"></i>
-            <span>No subscription, ever</span>
+            <span>No subscription, no ads, no nonsense</span>
         </div>
         <div class="trust-item">
             <i class="fa-solid fa-rotate"></i>
@@ -458,79 +539,113 @@
         </div>
     </div>
 
+    <!-- STORY -->
+    <section class="story">
+        <h2>Why I built this</h2>
+        <p>
+            Voice-to-text on Windows has always been a compromise. The built-in Windows
+            option never quite worked well enough. Cloud-based tools send your audio to
+            a server somewhere. And some apps come with hidden costs —
+            <strong>not just money, but your CPU, your bandwidth, and your privacy.
+            Read the fine print sometime.</strong>
+        </p>
+        <p>
+            VoxFlow uses <strong>Whisper AI</strong>, an open-source model that runs
+            entirely on your own machine. It downloads once on first launch and never
+            needs the internet again. No servers. No data leaving your PC. Just accurate,
+            fast transcription that works in any Windows application.
+        </p>
+        <div class="story-divider"></div>
+        <p>
+            It's a side project, built properly. I use it every day and I'll keep
+            improving it. If something breaks, there's a bug reporter built right into
+            the app that emails me directly. I read everything.
+        </p>
+    </section>
+
     <!-- FEATURES -->
     <section class="features" id="features">
-        <p class="section-label">FEATURES</p>
-        <h2 class="section-title">Everything you need, nothing you don't</h2>
-        <div class="features-grid">
+        <div class="features-inner">
+            <p class="section-label">WHAT YOU GET</p>
+            <h2 class="section-title">Built to actually be useful</h2>
+            <p class="section-sub">Everything I wanted from a voice-to-text app, in one place.</p>
 
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-microchip"></i></div>
-                <h3>Offline AI Recognition</h3>
-                <p>Powered by Whisper AI running entirely on your machine. No cloud, no latency, no privacy concerns.</p>
+            <div class="features-grid">
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-microchip"></i></div>
+                    <h3>Offline AI — Powered by Whisper</h3>
+                    <p>The same AI model behind some of the best transcription tools, running entirely on your machine. No internet, no servers, no monthly fees.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-globe"></i></div>
+                    <h3>99 Languages</h3>
+                    <p>Switch languages from the settings panel. Whisper supports 99 of them natively — all of them are available in VoxFlow.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-book"></i></div>
+                    <h3>Custom Vocabulary</h3>
+                    <p>Add your own word replacements so names, technical terms, and business-specific language always come out right.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <h3>Text Templates</h3>
+                    <p>Say a short keyword and type out a full block of text — useful for email signatures, common responses, or code snippets.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                    <h3>Recording History</h3>
+                    <p>Your last 20 transcriptions are saved and accessible in settings. Copy anything back with a single click.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-terminal"></i></div>
+                    <h3>Voice Commands for Symbols</h3>
+                    <p>Say "open bracket", "at sign", "new line", "comma" and more. Useful for coding, writing, and anywhere punctuation matters.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-tablet-screen-button"></i></div>
+                    <h3>Floating Pill Widget</h3>
+                    <p>A small always-on-top widget shows your recording status. Drag it anywhere on screen and adjust the size and opacity to suit you.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+                    <h3>Automatic Updates</h3>
+                    <p>VoxFlow checks for new versions silently in the background and lets you know when one is ready. No manual checking needed.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-keyboard"></i></div>
+                    <h3>Global Hotkey</h3>
+                    <p>One customizable hotkey works across every application. Hold to record or use toggle mode — whichever suits your workflow.</p>
+                </div>
+
             </div>
-
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-globe"></i></div>
-                <h3>99 Languages</h3>
-                <p>Switch between any of 99 supported languages instantly from the settings panel.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-book"></i></div>
-                <h3>Custom Vocabulary</h3>
-                <p>Teach VoxFlow your names, technical terms, and business jargon so they're always spelled correctly.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
-                <h3>Text Templates</h3>
-                <p>Say a short keyword and instantly type out a full paragraph, email signature, or code snippet.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
-                <h3>Recording History</h3>
-                <p>Every transcription is saved for quick access. Copy any recent dictation with one click.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-terminal"></i></div>
-                <h3>Voice Commands</h3>
-                <p>Say "open bracket", "new line", "comma" and more. Full symbol and punctuation control by voice.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-tablet-screen-button"></i></div>
-                <h3>Floating Pill Widget</h3>
-                <p>A sleek always-on-top pill widget shows recording status. Drag it anywhere, resize it, adjust opacity.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
-                <h3>Auto-Updater</h3>
-                <p>VoxFlow silently checks for updates and notifies you when a new version is ready to install.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-keyboard"></i></div>
-                <h3>Global Hotkey</h3>
-                <p>Record from any app using a customizable global hotkey. Hold to record or toggle mode.</p>
-            </div>
-
         </div>
     </section>
 
     <!-- VS -->
     <section class="vs-section">
         <div class="vs-container">
-            <p class="section-label">COMPARISON</p>
-            <h2 class="section-title">VoxFlow vs LilySpeech</h2>
+            <p class="section-label">HONEST COMPARISON</p>
+            <h2 class="section-title">VoxFlow vs The Rest</h2>
+            <p class="vs-context">
+                Most free voice-to-text tools aren't actually free. Some show ads. Some
+                send your audio to the cloud. Some —
+                <strong>and this is buried in their terms of service</strong> — use your
+                CPU and internet bandwidth as a form of payment. VoxFlow does none of that.
+            </p>
             <table class="vs-table">
                 <thead>
                     <tr>
                         <th></th>
-                        <th>LilySpeech</th>
+                        <th>Most Free Tools</th>
                         <th>VoxFlow</th>
                     </tr>
                 </thead>
@@ -539,7 +654,7 @@
                     <tr><td>No ads</td><td><i class="fa-solid fa-xmark"></i></td><td><i class="fa-solid fa-check"></i></td></tr>
                     <tr><td>No background CPU usage</td><td><i class="fa-solid fa-xmark"></i></td><td><i class="fa-solid fa-check"></i></td></tr>
                     <tr><td>No subscription</td><td><i class="fa-solid fa-xmark"></i></td><td><i class="fa-solid fa-check"></i></td></tr>
-                    <tr><td>Custom vocabulary</td><td><i class="fa-solid fa-check"></i></td><td><i class="fa-solid fa-check"></i></td></tr>
+                    <tr><td>Custom vocabulary</td><td><i class="fa-solid fa-xmark"></i></td><td><i class="fa-solid fa-check"></i></td></tr>
                     <tr><td>99 languages</td><td><i class="fa-solid fa-xmark"></i></td><td><i class="fa-solid fa-check"></i></td></tr>
                     <tr><td>Text templates</td><td><i class="fa-solid fa-xmark"></i></td><td><i class="fa-solid fa-check"></i></td></tr>
                     <tr><td>Recording history</td><td><i class="fa-solid fa-xmark"></i></td><td><i class="fa-solid fa-check"></i></td></tr>
@@ -552,68 +667,90 @@
     <!-- PRICING -->
     <section class="pricing" id="pricing">
         <p class="section-label">PRICING</p>
-        <h2 class="section-title">Simple, honest pricing</h2>
+        <h2 class="section-title">One price. No catches.</h2>
+        <p class="pricing-context">
+            I wanted a price that felt fair for what you get.
+            <strong>$4.99 once</strong> and you have it forever — every feature,
+            every future update, no subscription reminding you it exists every month.
+        </p>
         <div class="price-card">
             <div class="price-amount">$4.99</div>
             <div class="price-period">one-time &nbsp;·&nbsp; no subscription</div>
             <ul class="price-features">
-                <li><i class="fa-solid fa-check"></i> Full access to every feature</li>
+                <li><i class="fa-solid fa-check"></i> Every feature included</li>
                 <li><i class="fa-solid fa-check"></i> 99 language support</li>
                 <li><i class="fa-solid fa-check"></i> Custom vocabulary and templates</li>
                 <li><i class="fa-solid fa-check"></i> Free updates forever</li>
-                <li><i class="fa-solid fa-check"></i> Windows 10 and 11</li>
+                <li><i class="fa-solid fa-check"></i> Works on Windows 10 and 11</li>
             </ul>
             <a href="https://github.com/jamesharvey3000/VoxFlow/releases/latest/download/VoxFlow_Setup.exe"
                class="btn-primary" style="width:100%; justify-content:center;">
                 <i class="fa-solid fa-download"></i> Download Now
             </a>
         </div>
+        <p class="price-note">Windows only &nbsp;·&nbsp; No account required</p>
     </section>
 
     <!-- FAQ -->
     <section class="faq" id="faq">
         <div class="faq-container">
             <p class="section-label">FAQ</p>
-            <h2 class="section-title">Common questions</h2>
+            <h2 class="section-title">Questions I'd ask too</h2>
 
             <div class="faq-item">
-                <h3><i class="fa-solid fa-circle-question"></i> Does VoxFlow require an internet connection?</h3>
-                <p>No. VoxFlow runs entirely offline using a local AI model downloaded once at first launch. After that it works with no internet at all.</p>
+                <h3><i class="fa-solid fa-circle-question"></i> Does it really work with no internet?</h3>
+                <p>Yes. On first launch it downloads the Whisper AI model once (about 140MB). After that it never needs the internet again. Disconnect entirely and it works fine.</p>
             </div>
+
             <div class="faq-item">
-                <h3><i class="fa-solid fa-circle-question"></i> How is this different from Windows built-in speech recognition?</h3>
-                <p>Windows Speech Recognition requires training and doesn't work well out of the box. VoxFlow uses Whisper AI which is significantly more accurate and works in 99 languages without any training.</p>
+                <h3><i class="fa-solid fa-circle-question"></i> How accurate is it compared to cloud-based tools?</h3>
+                <p>Surprisingly close. Whisper is one of the best open-source speech models available and handles natural speech, accents, and technical language well. For most everyday use you won't notice a meaningful difference.</p>
             </div>
+
             <div class="faq-item">
-                <h3><i class="fa-solid fa-circle-question"></i> Will it work in any app?</h3>
-                <p>Yes. VoxFlow uses a global hotkey and injects text directly — it works in any Windows application including browsers, Word, Slack, VS Code and games.</p>
+                <h3><i class="fa-solid fa-circle-question"></i> Will it work in the apps I actually use?</h3>
+                <p>Yes. VoxFlow injects text at the cursor position using your keyboard, which means it works in anything — browsers, Word, Slack, VS Code, games, whatever you have open.</p>
             </div>
+
             <div class="faq-item">
-                <h3><i class="fa-solid fa-circle-question"></i> What are the system requirements?</h3>
-                <p>Windows 10 or 11, 64-bit. A microphone. At least 4GB of RAM recommended for best performance.</p>
+                <h3><i class="fa-solid fa-circle-question"></i> What does my PC need to run it?</h3>
+                <p>Windows 10 or 11, 64-bit, and a microphone. At least 4GB of RAM is recommended for smooth performance. No GPU required.</p>
             </div>
+
             <div class="faq-item">
-                <h3><i class="fa-solid fa-circle-question"></i> Do I get free updates?</h3>
-                <p>Yes. Pay once and get every future update for free. VoxFlow notifies you automatically when updates are available.</p>
+                <h3><i class="fa-solid fa-circle-question"></i> What happens when you release updates?</h3>
+                <p>VoxFlow checks for updates automatically in the background. When one is available a notification appears in the pill widget and in Settings. Nothing installs without your say so.</p>
             </div>
+
             <div class="faq-item">
-                <h3><i class="fa-solid fa-circle-question"></i> Found a bug or need help?</h3>
-                <p>Use the built-in bug reporter in Settings → About, or email <a href="mailto:kagedambition@gmail.com" style="color:#FF6B2F;">kagedambition@gmail.com</a></p>
+                <h3><i class="fa-solid fa-circle-question"></i> Something broke. How do I reach you?</h3>
+                <p>There's a bug reporter built into the app under Settings → About. It opens an email with your system info pre-filled. You can also email <a href="mailto:kagedambition@gmail.com" style="color:#FF6B2F;">kagedambition@gmail.com</a> directly. I read everything.</p>
             </div>
+
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer>
-    <p>Built by a developer who wanted a better tool &nbsp;·&nbsp; © 2026 JH Dev</p>
-    <div class="footer-links">
-        <a href="https://github.com/jamesharvey3000/VoxFlow"><i class="fa-brands fa-github"></i> GitHub</a>
-        <a href="terms.html"><i class="fa-solid fa-file-lines"></i> Terms</a>
-        <a href="privacy.html"><i class="fa-solid fa-shield-halved"></i> Privacy</a>
-        <a href="mailto:kagedambition@gmail.com"><i class="fa-solid fa-envelope"></i> Contact</a>
-        <a href="https://github.com/jamesharvey3000/VoxFlow/releases/latest/download/VoxFlow_Setup.exe"><i class="fa-solid fa-download"></i> Download</a>
-    </div>
-</footer>
+        <p>Built by a developer who wanted a better tool &nbsp;·&nbsp; © 2026 JH Dev</p>
+        <div class="footer-links">
+            <a href="https://github.com/jamesharvey3000/VoxFlow">
+                <i class="fa-brands fa-github"></i> GitHub
+            </a>
+            <a href="terms.html">
+                <i class="fa-solid fa-file-lines"></i> Terms of Service
+            </a>
+            <a href="privacy.html">
+                <i class="fa-solid fa-shield-halved"></i> Privacy Policy
+            </a>
+            <a href="mailto:kagedambition@gmail.com">
+                <i class="fa-solid fa-envelope"></i> Contact
+            </a>
+            <a href="https://github.com/jamesharvey3000/VoxFlow/releases/latest/download/VoxFlow_Setup.exe">
+                <i class="fa-solid fa-download"></i> Download
+            </a>
+        </div>
+    </footer>
 
 </body>
 </html>
